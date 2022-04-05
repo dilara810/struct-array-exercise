@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct 
+{
+	
+    char vocab[15];
+    int voc_len;
+    
+}words_t;
+
+void simpleEncrypt(words_t *word)   //only contains one part of the word array
+{									//which means we should use this array size times
+    
+	int i = 0;
+    
+    for(i;i<word->voc_len;i++)
+    {   
+        							//only add voc_len to every character
+		word->vocab[i] += word->voc_len;
+        
+    }
+    
+}
+
+
+int main()
+{
+    words_t *word;
+    int num,size;
+
+    printf("Enter the number of words: ");
+    scanf("%d",&num);
+
+	char arr[15][size];
+
+	word = (words_t*)malloc(num*sizeof(words_t));
+
+    for(int i=0;i<num;i++)
+    {
+        printf("Enter the %d. word: ",i+1);
+        
+        scanf("%s",&word[i].vocab);
+        
+        (word+i)->voc_len = strlen(word[i].vocab); //(word+i)-> same as word[i].
+        
+        simpleEncrypt(word+i);  //already adress so no need to &
+        
+    }
+       
+	for(int i = 0;i<num;i++){
+		
+		printf("%d: %s\n",i+1,word[i].vocab);
+		
+	} 
+
+}
